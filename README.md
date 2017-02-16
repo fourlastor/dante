@@ -10,7 +10,7 @@ This is the very first release of Dante, the api will (most likely) change for t
 
 ## Installation
 
-Simply add the following to your `build.gradle` dependencies:
+Simply add the following to your `build.gradle`:
 
 ```
 repositories {

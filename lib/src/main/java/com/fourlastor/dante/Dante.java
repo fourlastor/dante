@@ -10,12 +10,12 @@ import com.fourlastor.dante.parser.Parser;
 
 import java.util.ArrayList;
 
-public class FlavoredTextBuilder implements ParseListener {
+public class Dante implements ParseListener {
     private final Parser parser;
     private final ArrayList<BlockListener> listeners;
     private SpannableStringBuilder builder;
 
-    public FlavoredTextBuilder(Parser parser) {
+    public Dante(Parser parser) {
         this.parser = parser;
         this.listeners = new ArrayList<>();
         parser.register(this);

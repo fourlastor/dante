@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(emulateSdk = 18)
-public class FlavoredTextBuilderTest {
+public class DanteTest {
 
     @Test public void testRegistersOnParser() throws Exception {
         Parser parser = Mockito.mock(Parser.class);

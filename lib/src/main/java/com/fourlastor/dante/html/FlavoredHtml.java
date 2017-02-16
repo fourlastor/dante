@@ -6,33 +6,33 @@ import android.support.annotation.IntDef;
 import android.support.annotation.StyleRes;
 import android.text.Spanned;
 
-import com.fourlastor.dante.FlavoredTextBuilder;
+import com.fourlastor.dante.Dante;
 
 public class FlavoredHtml {
 
-    private final FlavoredTextBuilder builder;
+    private final Dante dante;
 
-    private FlavoredHtml(FlavoredTextBuilder builder) {
-        this.builder = builder;
+    private FlavoredHtml(Dante dante) {
+        this.dante = dante;
     }
 
     public static class Builder {
 
         private final Context context;
-        private final FlavoredTextBuilder builder;
+        private final Dante dante;
 
         public Builder(Context context) {
             this.context = context;
-            this.builder = new FlavoredTextBuilder(new HtmlParser());
+            this.dante = new Dante(new HtmlParser());
         }
 
         public Builder newLine(String... tags) {
-            builder.register(new NewLineListener(tags));
+            dante.register(new NewLineListener(tags));
             return this;
         }
 
         public Builder textAppearance(@StyleRes int styleRes, String... tags) {
-            builder.register(new TextAppearanceListener(context, styleRes, tags));
+            dante.register(new TextAppearanceListener(context, styleRes, tags));
             return this;
         }
 
@@ -42,22 +42,22 @@ public class FlavoredHtml {
         }
 
         public Builder style(@TypefaceInt int typeface, String... tags) {
-            builder.register(new StyleSpanListener(typeface, tags));
+            dante.register(new StyleSpanListener(typeface, tags));
             return this;
         }
 
         public Builder bullet(int margin, String... tags) {
-            builder.register(new LeadingMarginSpanListener(margin, tags));
-            builder.register(new BulletSpanListener(margin, tags));
+            dante.register(new LeadingMarginSpanListener(margin, tags));
+            dante.register(new BulletSpanListener(margin, tags));
             return this;
         }
 
         public FlavoredHtml build() {
-            return new FlavoredHtml(builder);
+            return new FlavoredHtml(dante);
         }
     }
 
     public Spanned parse(String html) {
-        return builder.parse(html);
+        return dante.parse(html);
     }
 }

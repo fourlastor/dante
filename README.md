@@ -11,7 +11,13 @@ This is the very first release of Dante, the api will (most likely) change for t
 Simply add the following to your `build.gradle` dependencies:
 
 ```
-compile 'com.fourlastor:dante:0.0.1'
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'com.fourlastor:dante:0.0.1'
+}
 ```
 
 ## Usage with HTML

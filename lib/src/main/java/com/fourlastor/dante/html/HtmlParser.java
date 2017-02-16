@@ -1,6 +1,5 @@
 package com.fourlastor.dante.html;
 
-import com.fourlastor.dante.html.block.HtmlBlock;
 import com.fourlastor.dante.parser.ParseListener;
 import com.fourlastor.dante.parser.Parser;
 
@@ -14,10 +13,10 @@ import java.io.IOException;
 import java.io.StringReader;
 
 
-public class HtmlParser implements Parser, ContentHandler {
+class HtmlParser implements Parser, ContentHandler {
 
-    ParseListener listener;
-    StringBuilder buffer;
+    private ParseListener listener;
+    private StringBuilder buffer;
 
     @Override public void parse(String string) {
         org.ccil.cowan.tagsoup.Parser parser = new org.ccil.cowan.tagsoup.Parser();
@@ -25,9 +24,7 @@ public class HtmlParser implements Parser, ContentHandler {
         try {
             parser.parse(new InputSource(new StringReader(string)));
         } catch (IOException | SAXException e) {
-            // We are reading from a string. There should not be IO problems.
-            // TagSoup doesn't throw parse exceptions.
-            throw new RuntimeException(e);
+            throw new HtmlParsingException(e);
         }
 
         emptyBuffer();
@@ -81,4 +78,11 @@ public class HtmlParser implements Parser, ContentHandler {
     @Override public void processingInstruction(String target, String data) throws SAXException {}
 
     @Override public void skippedEntity(String name) throws SAXException {}
+
+    public static class HtmlParsingException extends RuntimeException {
+
+        HtmlParsingException(Exception e) {
+            super("HTML parsing failed", e);
+        }
+    }
 }

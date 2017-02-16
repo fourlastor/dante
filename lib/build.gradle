@@ -23,6 +23,7 @@ android {
 
 dependencies {
     compile 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
+    compile 'com.android.support:support-annotations:25.1.1'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
 }

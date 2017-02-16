@@ -1,21 +1,21 @@
-package com.fourlastor.dante.html.listener;
+package com.fourlastor.dante.html;
 
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.util.Log;
 
-import com.fourlastor.dante.html.block.HtmlBlock;
 import com.fourlastor.dante.parser.Block;
 import com.fourlastor.dante.parser.BlockListener;
 
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class BlockStyleListener implements BlockListener {
+abstract class BlockStyleListener implements BlockListener {
 
     private List<String> tags;
 
-    public BlockStyleListener(String... tags) {
+    BlockStyleListener(String... tags) {
         this.tags = Arrays.asList(tags);
     }
 
@@ -44,8 +44,7 @@ public abstract class BlockStyleListener implements BlockListener {
                 messageBuilder.append(" %s");
             }
 
-            String message = messageBuilder.toString();
-//            Timber.e(message, tags.toArray());
+            Log.e(getClass().getName(), "Block Style Listener failed, please report it with the following message \n\n: " + messageBuilder.toString());
             return;
         }
 

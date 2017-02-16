@@ -1,12 +1,12 @@
-package com.fourlastor.dante.html.listener;
+package com.fourlastor.dante.html;
 
 import android.text.style.StyleSpan;
 
-public class StyleSpanListener extends BlockStyleListener {
+class StyleSpanListener extends BlockStyleListener {
 
     private int style;
 
-    public StyleSpanListener(int style, String... tags) {
+    StyleSpanListener(int style, String... tags) {
         super(tags);
         this.style = style;
     }

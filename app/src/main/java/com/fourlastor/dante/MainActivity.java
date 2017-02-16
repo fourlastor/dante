@@ -1,5 +1,6 @@
 package com.fourlastor.dante;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spanned;
@@ -10,6 +11,7 @@ import com.fourlastor.dante.html.FlavoredHtml;
 public class MainActivity extends AppCompatActivity {
 
     private TextView html;
+    private FlavoredHtml flavoredHtml;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         html = ((TextView) findViewById(R.id.html));
+
+        flavoredHtml = new FlavoredHtml.Builder(this)
+                .newLine("p", "h1", "h2", "h3", "h4", "h5", "h6", "li")
+                .textAppearance(R.style.headline, "h1")
+                .textAppearance(R.style.title, "h2")
+                .textAppearance(R.style.subhead, "h3")
+                .textAppearance(R.style.body, "p", "li")
+                .style(Typeface.BOLD, "b", "strong")
+                .style(Typeface.ITALIC, "i", "em")
+                .bullet(15, "li")
+                .build();
     }
 
     @Override
@@ -42,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 "   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>\n" +
                 "   <li>Aliquam tincidunt mauris eu risus.</li>\n" +
                 "</ul>";
-        Spanned htmlText = FlavoredHtml.fromHtml(this, rawHtml);
 
+        Spanned htmlText = flavoredHtml.parse(rawHtml);
         html.setText(htmlText);
     }
 }

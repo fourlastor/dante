@@ -1,13 +1,13 @@
-package com.fourlastor.dante.html.listener;
+package com.fourlastor.dante.html;
 
 import android.content.Context;
 import android.text.style.TextAppearanceSpan;
 
-public class TextAppearanceListener extends BlockStyleListener {
+class TextAppearanceListener extends BlockStyleListener {
 
     private final TextAppearanceSpan span;
 
-    public TextAppearanceListener(Context context, int appearance, String... tags) {
+    TextAppearanceListener(Context context, int appearance, String... tags) {
         super(tags);
         this.span = new TextAppearanceSpan(context, appearance);
     }

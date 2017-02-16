@@ -1,19 +1,18 @@
-package com.fourlastor.dante.html.listener;
+package com.fourlastor.dante.html;
 
 import android.text.SpannableStringBuilder;
 
-import com.fourlastor.dante.html.block.HtmlBlock;
 import com.fourlastor.dante.parser.Block;
 import com.fourlastor.dante.parser.BlockListener;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class NewLineListener implements BlockListener {
+class NewLineListener implements BlockListener {
 
     private List<String> tags;
 
-    public NewLineListener(String... tags) {
+    NewLineListener(String... tags) {
         this.tags = Arrays.asList(tags);
     }
 
@@ -42,7 +41,7 @@ public class NewLineListener implements BlockListener {
     public boolean match(Block block) {
         return
                 block instanceof HtmlBlock
-                && matchName(((HtmlBlock) block).getName());
+                        && matchName(((HtmlBlock) block).getName());
     }
 
     private boolean matchName(String name) {

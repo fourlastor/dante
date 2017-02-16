@@ -1,4 +1,23 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.4.0'
+    }
+}
+
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'fourlastor'
+    groupId = 'com.fourlastor'
+    artifactId = 'dante'
+    publishVersion = '0.0.1'
+    desc = 'A simple to use library to style a certain text, like HTML.'
+    website = 'https://github.com/fourlastor/dante'
+}
 
 android {
     compileSdkVersion 25

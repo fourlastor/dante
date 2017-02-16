@@ -6,6 +6,8 @@ Originally I authored Dante in [Pause](http://pause.fm), the project is now dead
 
 This is the very first release of Dante, the api will (most likely) change for the better with successive iterations.
 
+![](images/screencast.gif)
+
 ## Installation
 
 Simply add the following to your `build.gradle` dependencies:

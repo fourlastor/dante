@@ -9,7 +9,7 @@ import android.text.Spanned;
 import android.widget.TextView;
 
 import com.fourlastor.dante.html.FlavoredHtml;
-import com.fourlastor.dante.html.ImgGetter;
+import com.fourlastor.dante.html.ImgLoader;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 .style(Typeface.BOLD, "b", "strong")
                 .style(Typeface.ITALIC, "i", "em")
                 .bullet(15, "li")
-                .img(new ImgGetter.BitmapImgGetter(getResources()) {
+                .img(new ImgLoader.BitmapLoader(getResources()) {
                     @Override
-                    protected Bitmap getBitmap(String src) {
+                    protected Bitmap loadBitmap(String src) {
                         try {
                             return Picasso.with(MainActivity.this)
                                     .load(src)

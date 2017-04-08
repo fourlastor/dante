@@ -43,7 +43,7 @@ Keep in mind that if you don't set anyting, your spannable will have **no stylin
 
 ## Loading images
 
-You'll have to implement either `ImgGetter` to load images, if you need to load bitmaps (e.g. from the network) you can use `ImgGetter.BitmapGetter`:
+You'll have to implement either `ImgLoader` to load images, if you need to load bitmaps (e.g. from the network) you can use `ImgLoader.BitmapLoader`:
 
 ```java
 FlavoredHtml flavoredHtml = new FlavoredHtml.Builder(context)

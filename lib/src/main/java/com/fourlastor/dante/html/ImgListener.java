@@ -12,10 +12,10 @@ class ImgListener implements BlockListener {
 
     private static final String UNICODE_REPLACE = "\uFFFC";
 
-    private final ImgGetter imgGetter;
+    private final ImgLoader imgLoader;
 
-    ImgListener(ImgGetter imgGetter) {
-        this.imgGetter = imgGetter;
+    ImgListener(ImgLoader imgLoader) {
+        this.imgLoader = imgLoader;
     }
 
     @Override
@@ -27,7 +27,7 @@ class ImgListener implements BlockListener {
 
         int len = text.length();
         text.append(UNICODE_REPLACE);
-        Drawable image = imgGetter.getImage(src);
+        Drawable image = imgLoader.loadImage(src);
         text.setSpan(
                 new ImageSpan(image, src),
                 len,

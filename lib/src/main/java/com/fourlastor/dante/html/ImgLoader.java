@@ -6,27 +6,27 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 
-public interface ImgGetter {
+public interface ImgLoader {
 
-    Drawable getImage(@NonNull String src);
+    Drawable loadImage(@NonNull String src);
 
-    abstract class BitmapImgGetter implements ImgGetter {
+    abstract class BitmapLoader implements ImgLoader {
 
         private final Resources resources;
 
-        protected BitmapImgGetter(Resources resources) {
+        protected BitmapLoader(Resources resources) {
             this.resources = resources;
         }
 
         @Override
-        public Drawable getImage(@NonNull String src) {
-            Bitmap bitmap = getBitmap(src);
+        public Drawable loadImage(@NonNull String src) {
+            Bitmap bitmap = loadBitmap(src);
             BitmapDrawable bitmapDrawable = new BitmapDrawable(resources, bitmap);
 
             bitmapDrawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
             return bitmapDrawable;
         }
 
-        protected abstract Bitmap getBitmap(String src);
+        protected abstract Bitmap loadBitmap(String src);
     }
 }

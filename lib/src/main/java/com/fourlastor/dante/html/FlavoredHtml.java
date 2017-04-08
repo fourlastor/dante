@@ -52,6 +52,11 @@ public class FlavoredHtml {
             return this;
         }
 
+        public Builder img(ImgListener.ImgGetter imgGetter) {
+            dante.register(new ImgListener(imgGetter));
+            return this;
+        }
+
         public FlavoredHtml build() {
             return new FlavoredHtml(dante);
         }

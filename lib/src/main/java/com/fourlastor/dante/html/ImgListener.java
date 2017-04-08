@@ -1,5 +1,8 @@
 package com.fourlastor.dante.html;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.Spannable;
@@ -51,5 +54,25 @@ public class ImgListener implements BlockListener {
     public interface ImgGetter {
 
         Drawable getImage(@NonNull String src);
+    }
+
+    public static abstract class BitmapImgGetter implements ImgGetter {
+
+        private final Resources resources;
+
+        protected BitmapImgGetter(Resources resources) {
+            this.resources = resources;
+        }
+
+        @Override
+        public Drawable getImage(@NonNull String src) {
+            Bitmap bitmap = getBitmap(src);
+            BitmapDrawable bitmapDrawable = new BitmapDrawable(resources, bitmap);
+
+            bitmapDrawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
+            return bitmapDrawable;
+        }
+
+        protected abstract Bitmap getBitmap(String src);
     }
 }

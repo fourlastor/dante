@@ -88,7 +88,7 @@ class HtmlParser implements Parser, ContentHandler {
 
     @Override public void skippedEntity(String name) throws SAXException {}
 
-    private static class HtmlParsingException extends RuntimeException {
+    public static class HtmlParsingException extends RuntimeException {
 
         HtmlParsingException(Exception e) {
             super("HTML parsing failed", e);

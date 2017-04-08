@@ -41,6 +41,28 @@ Spanned styledHtml = flavoredHtml.parse(htmlString);
 
 Keep in mind that if you don't set anyting, your spannable will have **no styling**, which means all your text will simply have the HTML tags stripped down!
 
+## Loading images
+
+You'll have to implement either `ImgGetter` to load images, if you need to load bitmaps (e.g. from the network) you can use `ImgGetter.BitmapGetter`:
+
+```java
+FlavoredHtml flavoredHtml = new FlavoredHtml.Builder(context)
+  .img(new ImgListener.BitmapImgGetter(getResources()) {
+                      @Override
+                      protected Bitmap getBitmap(String src) {
+                          try {
+                              return Picasso.with(MainActivity.this)
+                                      .load(src)
+                                      .get();
+                          } catch (IOException e) {
+                              throw new RuntimeException("Whoops!");
+                          }
+                      }
+                  })
+```
+
+Keep in mind that this will be executed in the same thread in which `flavoredHtml.parse()` is executed, if you wish to execute network requests, do so invoking `flavoredHtml.parse()` outside of the main thread.
+
 ## Different input types
 
 As long as you implement `Parser`, it shouldn't be hard to support a different text style, see `HtmlParser`'s implementation as a reference.

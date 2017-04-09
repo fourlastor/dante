@@ -39,7 +39,7 @@ class ImgListener implements BlockListener {
 
     @Override
     public void end(Block block, SpannableStringBuilder text) {
-
+        // nothing to do here
     }
 
     @Override

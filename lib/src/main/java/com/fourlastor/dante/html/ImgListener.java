@@ -26,12 +26,12 @@ class ImgListener implements BlockListener {
             return;
         }
 
-        int len = text.length();
+        int originalLength = text.length();
         text.append(UNICODE_REPLACE);
         Drawable image = imgLoader.loadImage(src);
         text.setSpan(
                 new ImageSpan(image, src),
-                len,
+                originalLength,
                 text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         );

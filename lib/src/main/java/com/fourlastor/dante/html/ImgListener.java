@@ -11,7 +11,8 @@ import com.fourlastor.dante.parser.BlockListener;
 class ImgListener implements BlockListener {
 
     private static final String UNICODE_REPLACE = "\uFFFC";
-    private static final String IMG = "img";
+    private static final String TAG_IMG = "img";
+    private static final String ATTRIBUTE_SRC = "src";
 
     private final ImgLoader imgLoader;
 
@@ -21,7 +22,7 @@ class ImgListener implements BlockListener {
 
     @Override
     public void start(Block block, SpannableStringBuilder text) {
-        String src = ((HtmlBlock) block).getAttributes().get("src");
+        String src = ((HtmlBlock) block).getAttributes().get(ATTRIBUTE_SRC);
         if (src == null) {
             return;
         }
@@ -45,6 +46,6 @@ class ImgListener implements BlockListener {
     @Override
     public boolean match(Block block) {
         return block instanceof HtmlBlock
-                && IMG.equalsIgnoreCase(((HtmlBlock) block).getName());
+                && TAG_IMG.equalsIgnoreCase(((HtmlBlock) block).getName());
     }
 }

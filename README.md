@@ -1,6 +1,6 @@
 # Dante
 
-Dante is a text parser to easily generate a `Spannable` from a raw input, right now it supports only HTML but the idea is to be able to support multiple input types (e.g. MarkDown).
+Dante is a text parser to easily generate a `Spannable` from a raw input, right now it supports only HTML but the idea is to be able to support multiple input types (e.g., MarkDown).
 
 Originally I authored Dante in [Pause](http://pause.fm), the project is now dead and I decided to open source it.
 
@@ -39,11 +39,11 @@ FlavoredHtml flavoredHtml = new FlavoredHtml.Builder(context)
 Spanned styledHtml = flavoredHtml.parse(htmlString);
 ```
 
-Keep in mind that if you don't set anyting, your spannable will have **no styling**, which means all your text will simply have the HTML tags stripped down!
+Keep in mind that this will be executed on the same thread on which `flavoredHtml.parse()` is executed. Since loading images might entail executing network requests, make sure you invoke `flavoredHtml.parse()` outside of the main thread if you are also loading images.
 
 ## Loading images
 
-You'll have to implement either `ImgLoader` to load images, if you need to load bitmaps (e.g. from the network) you can use `ImgLoader.BitmapLoader`:
+You'll have to implement either `ImgLoader` to load images, if you need to load bitmaps (e.g., from the network) you can use `ImgLoader.BitmapLoader`:
 
 ```java
 FlavoredHtml flavoredHtml = new FlavoredHtml.Builder(context)
@@ -58,7 +58,7 @@ FlavoredHtml flavoredHtml = new FlavoredHtml.Builder(context)
                               throw new RuntimeException("Whoops!");
                           }
                       }
-                  })
+                  });
 ```
 
 Keep in mind that this will be executed in the same thread in which `flavoredHtml.parse()` is executed, if you wish to execute network requests, do so invoking `flavoredHtml.parse()` outside of the main thread.

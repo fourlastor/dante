@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 "   <li>Aliquam tincidunt mauris eu risus.</li>\n" +
                 "</ul>";
 
+        // This is an example. Use something that you can control better than AsyncTask for your production code.
         new AsyncTask<Void, Void, Spanned>() {
 
             @Override

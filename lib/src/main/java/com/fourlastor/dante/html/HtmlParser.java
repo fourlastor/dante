@@ -11,6 +11,9 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 
 class HtmlParser implements Parser, ContentHandler {
@@ -39,15 +42,21 @@ class HtmlParser implements Parser, ContentHandler {
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         emptyBuffer();
-        listener.start(new HtmlBlock(localName));
+
+        int attributesLength = attributes.getLength();
+        Map<String, String> attributesMap = new HashMap<>(attributesLength);
+        for (int i = 0; i < attributesLength; i++) {
+            attributesMap.put(attributes.getLocalName(i), attributes.getValue(i));
+        }
+        listener.start(new HtmlBlock(localName, attributesMap));
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         emptyBuffer();
-        listener.end(new HtmlBlock(localName));
+        listener.end(new HtmlBlock(localName, Collections.<String, String>emptyMap()));
     }
 
     @Override public void characters(char[] ch, int start, int length) throws SAXException {

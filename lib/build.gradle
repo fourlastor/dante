@@ -14,7 +14,7 @@ publish {
     userOrg = 'fourlastor'
     groupId = 'com.fourlastor'
     artifactId = 'dante'
-    publishVersion = '0.0.1'
+    publishVersion = '0.1.0'
     desc = 'A simple to use library to style a certain text, like HTML.'
     website = 'https://github.com/fourlastor/dante'
 }

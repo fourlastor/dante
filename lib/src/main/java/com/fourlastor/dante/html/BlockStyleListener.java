@@ -65,7 +65,7 @@ abstract class BlockStyleListener implements BlockListener {
         if (objs.length == 0) {
             return null;
         } else {
-            return objs[objs.length - 1];
+            return objs[0];
         }
     }
 

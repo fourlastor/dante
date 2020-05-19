@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spanned;
+import android.text.style.StrikethroughSpan;
 import android.widget.TextView;
 
+import com.fourlastor.dante.html.BlockStyleListener;
 import com.fourlastor.dante.html.FlavoredHtml;
 import com.fourlastor.dante.html.ImgLoader;
 import com.squareup.picasso.Picasso;
@@ -47,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 })
+                .blockStyle(new BlockStyleListener("s") {
+                    @Override
+                    protected Object getStyleSpan() {
+                        return new StrikethroughSpan();
+                    }
+                })
                 .build();
     }
 
@@ -62,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 "\n" +
                 "<ol>\n" +
                 "   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>\n" +
-                "   <li>Aliquam tincidunt mauris eu risus.</li>\n" +
+                "   <li><s>Aliquam tincidunt mauris eu risus.</s></li>\n" +
                 "</ol>\n" +
                 "\n" +
                 "<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>\n" +

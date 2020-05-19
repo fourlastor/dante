@@ -57,6 +57,11 @@ public class FlavoredHtml {
             return this;
         }
 
+        public Builder blockStyle(BlockStyleListener listener) {
+            dante.register(listener);
+            return this;
+        }
+
         public FlavoredHtml build() {
             return new FlavoredHtml(dante);
         }

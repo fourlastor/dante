@@ -11,11 +11,11 @@ import com.fourlastor.dante.parser.BlockListener;
 import java.util.Arrays;
 import java.util.List;
 
-abstract class BlockStyleListener implements BlockListener {
+public abstract class BlockStyleListener implements BlockListener {
 
     private List<String> tags;
 
-    BlockStyleListener(String... tags) {
+    public BlockStyleListener(String... tags) {
         this.tags = Arrays.asList(tags);
     }
 

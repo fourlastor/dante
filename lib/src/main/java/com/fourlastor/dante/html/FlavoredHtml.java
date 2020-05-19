@@ -2,8 +2,8 @@ package com.fourlastor.dante.html;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.annotation.IntDef;
-import android.support.annotation.StyleRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.StyleRes;
 import android.text.Spanned;
 
 import com.fourlastor.dante.Dante;

@@ -5,15 +5,17 @@ import android.text.style.TextAppearanceSpan;
 
 class TextAppearanceListener extends BlockStyleListener {
 
-    private final TextAppearanceSpan span;
+    private final Context context;
+    private final int appearance;
 
     TextAppearanceListener(Context context, int appearance, String... tags) {
         super(tags);
-        this.span = new TextAppearanceSpan(context, appearance);
+        this.context = context;
+        this.appearance = appearance;
     }
 
     @Override
     protected Object getStyleSpan() {
-        return span;
+        return new TextAppearanceSpan(context, appearance);
     }
 }

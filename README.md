@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.fourlastor:dante:1.0.0'
+  compile 'com.fourlastor:dante:1.0.1'
 }
 ```
 
